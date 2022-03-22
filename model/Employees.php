@@ -20,23 +20,6 @@ class Employees {
         return count($this->xmlfile->Employee);
     }
 
-
-    public function delete_employee($index) {
-        unset($this->xmlfile->Employee[$index]);
-        $this->xmlfile->asXML("Resources/Employees.xml");
-    }
-
-    public function search_by_name($search_name) {
-        $index = 0;
-        foreach ($this->xmlfile->Employee as $employee) {
-            if ($employee->name == $search_name) {
-                return $index;
-            } else {
-                $index++;
-            }
-        };
-        return -1;
-    }
     public function insert_employee($name, $phone, $address, $email) {
         $new_emp = $this->xmlfile->addChild("Employee");
         $new_emp->addChild("name", $name);
@@ -52,5 +35,22 @@ class Employees {
         $this->xmlfile->Employee[$index]->address = $address;
         $this->xmlfile->Employee[$index]->email = $email;
         $this->xmlfile->asXML("Resources/Employees.xml");
+    }
+
+    public function delete_employee($index) {
+        unset($this->xmlfile->Employee[$index]);
+        $this->xmlfile->asXML("Resources/Employees.xml");
+    }
+
+    public function searchByName($search_name) {
+        $index = 0;
+        foreach ($this->xmlfile->Employee as $employee) {
+            if ($employee->name == $search_name) {
+                return $index;
+            } else {
+                $index++;
+            }
+        };
+        return -1;
     }
 }
