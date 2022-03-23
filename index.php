@@ -66,28 +66,28 @@ if (isset($_POST['insert'])) {
     $employees->insert_employee($name, $phone, $address, $email);
     $emps_number++;
     $employee_index = $emps_number - 1;
-    $app_message = "Employee was successfully added.";
+    $app_message = "successfully added.";
 }
 
 if (isset($_POST['update'])) {
     $employees->update_employee($employee_index, $name, $phone, $address, $email);
-    $app_message = "Employee Info. was successfully updated.";
+    $app_message = "successfully updated.";
 }
 
 if (isset($_POST['delete'])) {
     $employees->delete_employee($employee_index);
     $emps_number--;
     $employee_index = $employee_index <= 0 ? 0 : $employee_index - 1;
-    $app_message = "Employee was successfully deleted.";
+    $app_message = "successfully deleted.";
 }
 
 if (isset($_POST['search'])) {
     $search_result = $employees->searchByName($search_name);
     if ($search_result == -1) {
-        $app_message = "This name doesn't match any Employee.";
+        $app_message = "name doesn't match any Employee.";
     } else {
         $employee_index = $search_result;
-        $app_message = "Employee was found!";
+        $app_message = "found!";
     }
 }
 
